@@ -22,7 +22,6 @@ const Discount = () => {
     },
   });
 
-  // Filter medicines with a discount greater than 0
   const discountedMedicines = medicines.filter(
     (medicine) => medicine.discount > 0
   );
@@ -42,6 +41,7 @@ const Discount = () => {
       buyer: user?.email,
       quantity: 1,
     };
+
     axiosSecure.post("/addtocart", cartData).then(() => {
       refetch();
       Swal.fire({
@@ -55,8 +55,8 @@ const Discount = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3,
+      items: 4,
+      slidesToSlide: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 640 },
@@ -93,40 +93,61 @@ const Discount = () => {
         >
           {discountedMedicines.map((medicine) => (
             <div key={medicine._id} className="p-2">
-              <div className="card bg-white shadow-lg rounded-lg overflow-hidden relative">
-                <div>
-                  {/* Discount Badge */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden relative">
+                {/* Discount Badge */}
+                {medicine.discount > 0 && (
                   <div className="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">
                     {medicine.discount}% OFF
                   </div>
+                )}
 
-                  {/* Medicine Image */}
-                  <img
-                    src={medicine.image || "/placeholder-image.png"} // Fallback for missing image
-                    alt={medicine.itemName || "Medicine"}
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
+                <img
+                  src={medicine.image || "/placeholder-image.png"}
+                  alt={medicine.itemName || "Medicine"}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
 
-                {/* Medicine Details */}
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3
+                    className="text-lg font-semibold text-gray-800 line-clamp-1"
+                    title={medicine.itemName}
+                  >
                     {medicine.itemName || "Unknown Medicine"}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p
+                    className="text-sm text-gray-600 line-clamp-1"
+                    title={medicine.genericName}
+                  >
                     {medicine.genericName || "No Generic Name"}
                   </p>
-                  <p className="text-xl font-semibold text-green-600 mt-2">
-                    ${medicine.price?.toFixed(2) || "N/A"}
-                  </p>
-
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={() => handleAddToCart(medicine)}
-                    className="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+                  <p
+                    className="text-sm text-gray-600 line-clamp-1"
+                    title={medicine.description}
                   >
-                    Add to Cart
-                  </button>
+                    {medicine.description || "No Generic Name"}
+                  </p>
+                  <div className="flex items-center justify-between mt-2">
+                    <div>
+                      <p className="text-xl font-semibold text-green-600">
+                        $
+                        {(
+                          medicine.price -
+                          (medicine.price * medicine.discount) / 100
+                        ).toFixed(2) || "N/A"}
+                        {medicine.discount > 0 && (
+                          <span className="text-sm text-gray-500 ml-1 line-through">
+                            ${medicine.price.toFixed(2)}
+                          </span>
+                        )}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleAddToCart(medicine)}
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

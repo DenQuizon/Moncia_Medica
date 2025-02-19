@@ -22,7 +22,7 @@ const Testimonials = () => {
 
   return (
     <section className="my-14 py-10 bg-gray-100 dark:bg-gray-900 rounded-xl">
-      <h2 className="text-3xl font-bold text-center mb-6">
+      <h2 className=" text-black text-3xl font-bold text-center mb-6">
         🌟 What Our Customers Say
       </h2>
       <div className=" p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -36,7 +36,7 @@ const Testimonials = () => {
               alt={review.name}
               className="w-16 h-16 rounded-full mx-auto mb-3"
             />
-            <h3 className="text-lg font-semibold">{review.name}</h3>
+            <h3 className="text-lg text-black font-semibold">{review.name}</h3>
             <p className="text-gray-600 italic">"{review.comment}"</p>
           </div>
         ))}
