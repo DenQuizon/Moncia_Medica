@@ -2,7 +2,7 @@ import React from "react";
 
 const GetTheAppSection = () => {
   return (
-    <section className="bg-[#a7dada] py-12">
+    <section className="bg-[#a7dada] py-12 my-14">
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 w-11/12 mx-auto">
         {/* Left Section: Instructions and App Icons */}
         <div className="lg:w-1/2 text-center lg:text-left space-y-6">

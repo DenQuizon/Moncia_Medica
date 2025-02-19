@@ -8,7 +8,7 @@ import img6 from "../../../public/beximco.png";
 
 const FeatureBrand = () => {
   return (
-    <div className="bg-white p-8">
+    <div className="bg-white p-8 my-14">
       <h2 className="text-black text-2xl font-bold text-center mb-8">
         Our Trusted Brands
       </h2>

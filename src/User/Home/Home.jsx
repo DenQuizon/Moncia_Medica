@@ -10,6 +10,7 @@ import GetTheAppSection from "./GetTheAppSection";
 import FeatureBrand from "./FeatureBrand";
 import ReferralCard from "../../ReferralCard";
 import Testimonials from "../../Testimonials";
+import Products from "./Products";
 
 const Home = () => {
   const axiosPublic = UseAxiosPublic();
@@ -46,7 +47,7 @@ const Home = () => {
       <Banner />
 
       {/* Category Carousel */}
-      <div className="p-6">
+      <div className="p-6 my-14">
         <h1 className="text-3xl font-bold text-center mb-8">
           Medicine Categories
         </h1>
@@ -64,14 +65,18 @@ const Home = () => {
               <NavLink to={`/category/details/${item.category}`}>
                 <div className="card bg-white shadow-lg rounded-lg overflow-hidden">
                   <img
-                    src={item.image}
-                    alt={item.category}
-                    className="w-full h-48 object-cover"
+                    src={item.image || "/placeholder-image.png"}
+                    alt={item.itemName || "Medicine"}
+                    className="w-full h-48 object-cover rounded-t-lg"
                   />
-                  <div className="p-4">
+
+                  <div className="p-4 flex justify-between">
                     <h3 className="text-lg font-semibold text-gray-800">
                       {item.category}
                     </h3>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                      View All
+                    </button>
                   </div>
                 </div>
               </NavLink>
@@ -79,6 +84,8 @@ const Home = () => {
           ))}
         </Carousel>
       </div>
+
+      <Products></Products>
 
       <Discount></Discount>
       <GetTheAppSection></GetTheAppSection>

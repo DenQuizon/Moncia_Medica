@@ -59,56 +59,60 @@ const CategoryDetails = () => {
       <h1 className="text-3xl font-bold text-center mb-8">
         {category} Medicines
       </h1>
-      <div className="overflow-x-auto">
-        <table className="table-auto w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-200 text-left">
-              <th className="border border-gray-300 p-2">Image</th>
-              <th className="border border-gray-300 p-2">Name</th>
-              <th className="border border-gray-300 p-2">Company</th>
-              <th className="border border-gray-300 p-2">Price</th>
-              <th className="border border-gray-300 p-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {medicines.map((medicine) => (
-              <tr key={medicine._id} className="hover:bg-gray-100">
-                <td className="border border-gray-300 p-2">
-                  <img
-                    src={medicine.image}
-                    alt={medicine.itemName}
-                    className="w-12 h-12 object-cover"
-                  />
-                </td>
-                <td className="border border-gray-300 p-2">
-                  {medicine.itemName}
-                </td>
-                <td className="border border-gray-300 p-2">
-                  {medicine.company}
-                </td>
-                <td className="border border-gray-300 p-2">
-                  ${medicine.price}
-                </td>
-                <td className="border border-gray-300 p-2 flex gap-2">
-                  {/* Eye Button for Modal */}
-                  <button
-                    className="btn btn-info btn-sm"
-                    onClick={() => setSelectedMedicine(medicine)}
-                  >
-                    Eye
-                  </button>
-                  {/* Select Button */}
-                  <button
-                    className="btn btn-success btn-sm"
-                    onClick={() => handleAddToCart(medicine)}
-                  >
-                    Select
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {" "}
+        {/* Grid Layout */}
+        {medicines.map((medicine) => (
+          <div
+            key={medicine._id}
+            className="bg-white rounded-lg shadow-md p-4 border"
+          >
+            {" "}
+            {/* Card Container */}
+            <img
+              src={medicine.image}
+              alt={medicine.itemName}
+              className="w-full h-48 object-cover rounded-t-lg mb-4"
+            />
+            <div>
+              <h3
+                className="text-lg font-semibold text-gray-800 line-clamp-1"
+                title={medicine.itemName}
+              >
+                {medicine.itemName}
+              </h3>
+              <p
+                className="text-sm text-gray-600 line-clamp-1"
+                title={medicine.company}
+              >
+                {medicine.company}
+              </p>
+              <p
+                className="text-sm text-gray-600 line-clamp-2"
+                title={medicine.description}
+              >
+                {medicine.description}
+              </p>
+              <p className="text-md font-medium text-gray-800 mt-2">
+                ${medicine.price}
+              </p>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4 transition duration-300"
+                onClick={() => handleAddToCart(medicine)}
+              >
+                Select
+              </button>
+
+              {/* Eye button for modal */}
+              <button
+                className="mt-2 w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded-md transition duration-300"
+                onClick={() => setSelectedMedicine(medicine)}
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Medicine Details Modal */}

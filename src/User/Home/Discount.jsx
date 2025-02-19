@@ -79,7 +79,7 @@ const Discount = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 my-14">
       <h1 className="text-3xl font-bold text-center mb-8">Special Discounts</h1>
       {discountedMedicines.length > 0 ? (
         <Carousel
@@ -143,7 +143,7 @@ const Discount = () => {
                     </div>
                     <button
                       onClick={() => handleAddToCart(medicine)}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+                      className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-300"
                     >
                       Add to Cart
                     </button>
