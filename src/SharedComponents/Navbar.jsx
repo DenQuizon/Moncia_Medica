@@ -10,12 +10,9 @@ const Navbar = () => {
   const [carts, refetch] = UseCart();
   const { user, logout } = useContext(AuthContext);
 
-  const [theme, setTheme] = useState("light"); // Simulating user login state
+  const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState("English");
-  // const [isAdmin] = useAdmin();
-  // const [isSeller] = useSeller();
-  // console.log(isAdmin);
-  // console.log(isSeller);
+
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -33,27 +30,91 @@ const Navbar = () => {
   const menuLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Home
+        </NavLink>
       </li>
 
       <li>
-        <NavLink to="/shop">Shop</NavLink>
-      </li>
-      <li>
-        <NavLink to="/cart">
-          <span className="relative">
-            Cart {carts.length}
-            <span className="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-1"></span>
-          </span>
+        <NavLink
+          to="/shop"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Shop
         </NavLink>
       </li>
+      {user ? (
+        <li>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : (
+        ""
+      )}
+
+      {!user ? (
+        <li>
+          <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            Login
+          </NavLink>
+        </li>
+      ) : (
+        <li>
+          <NavLink
+            to="/profile"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            Profile
+          </NavLink>
+        </li>
+      )}
+      {user ? (
+        <li>
+          <NavLink
+            to="/cart"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            <span className="relative">
+              Cart {carts.length}
+              <span className="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-1"></span>
+            </span>
+          </NavLink>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
 
   return (
-    <div className="fixed w-full z-30 bg-[#a7dada]">
+    <div
+      className={`fixed w-full z-30 ${
+        theme === "light" ? "bg-[#a7dada]" : "bg-[#282c34]"
+      } transition-colors duration-300`}
+    >
       <div className="navbar bg-transparent backdrop-blur-lg w-11/12 mx-auto">
-        {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -83,17 +144,16 @@ const Navbar = () => {
               {menuLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">YourWebsite</a>
+          <a className="btn btn-ghost text-xl">MediShop</a>
         </div>
 
-        {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 nav-links">{menuLinks}</ul>
+          <ul className="menu menu-horizontal px-1 nav-links">
+            {menuLinks} {/* No need for extra fragment here */}
+          </ul>
         </div>
 
-        {/* Navbar End */}
         <div className="navbar-end flex items-center space-x-4">
-          {/* Language Dropdown */}
           <div className="dropdown hidden md:block">
             <button className="btn btn-sm">
               {language} <span className="ml-1">&#9660;</span>
@@ -120,15 +180,17 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="btn btn-sm bg-black text-white border-white hover:bg-gray-700 hidden md:block"
+            className={`btn btn-sm ${
+              theme === "light"
+                ? "bg-black text-white border-white hover:bg-gray-700"
+                : "bg-white text-black border-gray-700 hover:bg-gray-300"
+            } transition-colors duration-300 hidden md:block`}
           >
             {theme === "light" ? "Dark Mode" : "Light Mode"}
           </button>
 
-          {/* User Profile or Join Us */}
           {!user ? (
             <NavLink to="/signup" className="btn btn-primary btn-sm">
               Join Us

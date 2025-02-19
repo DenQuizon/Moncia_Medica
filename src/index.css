@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* ... other styles */
+
+.nav-links .active {
+  color: blue;
+  font-weight: bold;
+}
+
+.nav-links .pending {
+  color: gray;
+}
+
+.dark {
+  background-color: #282c34;
+  color: white;
+}
+
+.dark .navbar {
+  /* Style the navbar in dark mode if needed */
+  /* Example:  background-color: #333; */
+}
+
+.dark .btn {
+  border-color: gray; /* Example */
+}
+
+.dark .dropdown-content {
+  background-color: #333;
+  color: white;
+}
+
+.dark .dropdown-content li button {
+  color: white;
+}
+
+/* Optional: Style the cart count badge */
+.nav-links .relative .absolute {
+  top: -8px;
+  right: -5px;
+}
+
+/* Optional: Style the dropdown menu items */
+.dropdown-content li button {
+  padding: 5px 10px;
+}
+
+/* Optional: Style the avatar image */
+.avatar img {
+  object-fit: cover; /* or contain, depending on your preference */
+}
