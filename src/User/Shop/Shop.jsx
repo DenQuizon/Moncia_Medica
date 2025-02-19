@@ -90,7 +90,7 @@ const Shop = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <select
-          className="select select-bordered"
+          className="select select-bordered text-black"
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
         >
@@ -206,7 +206,7 @@ const Shop = () => {
       {/* Pagination Controls */}
       <div className="mt-4 flex justify-center gap-4">
         <button
-          className="btn btn-outline"
+          className="btn btn-outline bg-white"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -214,7 +214,7 @@ const Shop = () => {
         </button>
         <span className="text-lg font-bold">Page {currentPage}</span>
         <button
-          className="btn btn-outline"
+          className="btn btn-outline bg-white"
           onClick={() =>
             setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev))
           }

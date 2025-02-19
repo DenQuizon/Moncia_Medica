@@ -108,6 +108,10 @@ export const router = createBrowserRouter([
         element: <Overview></Overview>,
       },
       {
+        path: "/dashboard/profile", // Relative path
+        element: <User></User>,
+      },
+      {
         path: "/dashboard/adminhome", // Relative path
         element: (
           <AdminRoute>

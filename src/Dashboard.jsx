@@ -140,6 +140,14 @@ const Dashboard = () => {
                   Overview
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to={"/dashboard/profile"}
+                  className="block py-2 px-4 text-white hover:bg-cyan-500 rounded"
+                >
+                  Profile
+                </NavLink>
+              </li>
             </ul>
           </div>
 

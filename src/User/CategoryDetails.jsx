@@ -15,16 +15,20 @@ const CategoryDetails = () => {
   const axiosSecure = UseSecureAxios();
   const { category } = useParams();
   const [selectedMedicine, setSelectedMedicine] = useState(null);
-  console.log(category);
+  const [sortOrder, setSortOrder] = useState("asc"); // Sorting state
+
   const axiosPublic = UseAxiosPublic();
 
   const { data: medicines = [] } = useQuery({
-    queryKey: ["medicine"],
+    queryKey: ["medicine", category, sortOrder],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/get/category?category=${category}`);
+      const res = await axiosPublic.get(`/get/category`, {
+        params: { category, sort: sortOrder },
+      });
       return res.data;
     },
   });
+
   const handleAddToCart = (medicine) => {
     if (!user) {
       navigate("/login");
@@ -54,21 +58,30 @@ const CategoryDetails = () => {
     <div className="p-6">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Medistore||Categorydetails</title>
+        <title>Medistore || Category Details</title>
       </Helmet>
       <h1 className="text-3xl font-bold text-center mb-8">
         {category} Medicines
       </h1>
+
+      {/* Sort Dropdown */}
+      <div className="mb-4 flex justify-end">
+        <select
+          className="select select-bordered text-black"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="asc">Sort by Price: Low to High</option>
+          <option value="desc">Sort by Price: High to Low</option>
+        </select>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {" "}
-        {/* Grid Layout */}
         {medicines.map((medicine) => (
           <div
             key={medicine._id}
             className="bg-white rounded-lg shadow-md p-4 border"
           >
-            {" "}
-            {/* Card Container */}
             <img
               src={medicine.image}
               alt={medicine.itemName}

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { axiosPublic } from "../../CUstomHooks/UseAxiosPublic";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Products = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     data: products = [],
     isLoading,
@@ -15,6 +19,30 @@ const Products = () => {
       return response.data;
     },
   });
+  const handleAddToCart = (medicine) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    const cartData = {
+      medicineId: medicine._id,
+      name: medicine.itemName,
+      image: medicine.image,
+      price: medicine.price,
+      seller: medicine.sellerEmail,
+      buyer: user?.email,
+      quantity: 1,
+    };
+
+    axiosPublic.post("/addtocart", cartData).then(() => {
+      Swal.fire({
+        title: "Added to Cart",
+        text: `${medicine.itemName} has been added to your cart.`,
+        icon: "success",
+      });
+    });
+  };
 
   if (isLoading) return <p className="text-center text-lg">Loading...</p>;
   if (isError)
@@ -44,7 +72,10 @@ const Products = () => {
               {product.description}
             </p>
             <p className="text-blue-500 font-bold mt-2">${product.price}</p>
-            <button className="mt-3 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 w-full">
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="mt-3 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 w-full"
+            >
               Add to Cart
             </button>
           </div>
