@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import Discount from "./Discount";
 import GetTheAppSection from "./GetTheAppSection";
 import FeatureBrand from "./FeatureBrand";
+import ReferralCard from "../../ReferralCard";
 
 const Home = () => {
   const axiosPublic = UseAxiosPublic();
@@ -81,6 +82,7 @@ const Home = () => {
       <Discount></Discount>
       <GetTheAppSection></GetTheAppSection>
       <FeatureBrand></FeatureBrand>
+      <ReferralCard></ReferralCard>
     </div>
   );
 };
