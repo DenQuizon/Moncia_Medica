@@ -9,6 +9,7 @@ import Discount from "./Discount";
 import GetTheAppSection from "./GetTheAppSection";
 import FeatureBrand from "./FeatureBrand";
 import ReferralCard from "../../ReferralCard";
+import Testimonials from "../../Testimonials";
 
 const Home = () => {
   const axiosPublic = UseAxiosPublic();
@@ -83,6 +84,7 @@ const Home = () => {
       <GetTheAppSection></GetTheAppSection>
       <FeatureBrand></FeatureBrand>
       <ReferralCard></ReferralCard>
+      <Testimonials></Testimonials>
     </div>
   );
 };
