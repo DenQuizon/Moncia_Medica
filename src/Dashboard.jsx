@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./SharedComponents/Navbar";
 import useAdmin from "./CUstomHooks/useAdmin";
 import useSeller from "./CUstomHooks/useSeller";
+import Overview from "./router/Overview";
 
 const Dashboard = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -131,6 +132,14 @@ const Dashboard = () => {
                   </li>
                 </>
               )}
+              <li>
+                <NavLink
+                  to={"/dashboard"}
+                  className=" block py-2 px-4 text-white hover:bg-cyan-500 rounded"
+                >
+                  Overview
+                </NavLink>
+              </li>
             </ul>
           </div>
 

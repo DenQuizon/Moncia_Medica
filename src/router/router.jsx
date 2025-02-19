@@ -24,6 +24,8 @@ import SellerPayment from "../Seller/SellerPayment";
 import HomepageSeller from "../Seller/HomepageSeller";
 import AdminHomepage from "../Admin/AdminHomepage";
 import User from "../User";
+import Error from "./Error";
+import Overview from "./Overview";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +81,10 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <Signup></Signup>,
       },
+      {
+        path: "*",
+        element: <Error></Error>,
+      },
     ],
   },
   {
@@ -96,6 +102,10 @@ export const router = createBrowserRouter([
             <ManageCategory></ManageCategory>
           </AdminRoute>
         ),
+      },
+      {
+        path: "/dashboard", // Relative path
+        element: <Overview></Overview>,
       },
       {
         path: "/dashboard/adminhome", // Relative path
