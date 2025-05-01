@@ -15,4 +15,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-// sdad

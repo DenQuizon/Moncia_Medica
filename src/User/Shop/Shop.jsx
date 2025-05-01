@@ -261,6 +261,7 @@ const Shop = () => {
             <p>
               <strong>Price:</strong> ${selectedMedicine.price}
             </p>
+            {/* sdasdsd */}
           </div>
         </div>
       )}
