@@ -7,5 +7,5 @@ const Loading = () => {
     </div>
   );
 };
-
+// laoding spinner
 export default Loading;

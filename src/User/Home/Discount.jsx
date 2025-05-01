@@ -41,7 +41,7 @@ const Discount = () => {
       buyer: user?.email,
       quantity: 1,
     };
-    // sfafss
+
     axiosSecure.post("/addtocart", cartData).then(() => {
       refetch();
       Swal.fire({
