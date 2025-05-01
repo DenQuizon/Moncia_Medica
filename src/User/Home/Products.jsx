@@ -4,10 +4,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { axiosPublic } from "../../CUstomHooks/UseAxiosPublic";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import UseSecureAxios from "../../CUstomHooks/UseSecureAxios";
 
 const Products = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosSecure = UseSecureAxios();
   const {
     data: products = [],
     isLoading,
@@ -20,6 +22,7 @@ const Products = () => {
     },
   });
   const handleAddToCart = (medicine) => {
+    console.log("Add to Cart Clicked", medicine);
     if (!user) {
       navigate("/login");
       return;
@@ -35,7 +38,7 @@ const Products = () => {
       quantity: 1,
     };
 
-    axiosPublic.post("/addtocart", cartData).then(() => {
+    axiosSecure.post("/addtocart", cartData).then(() => {
       Swal.fire({
         title: "Added to Cart",
         text: `${medicine.itemName} has been added to your cart.`,
