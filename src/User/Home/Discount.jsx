@@ -136,7 +136,7 @@ const Discount = () => {
                         ).toFixed(2) || "N/A"}
                         {medicine.discount > 0 && (
                           <span className="text-sm text-gray-500 ml-1 line-through">
-                            ${medicine.price.toFixed(2)}
+                            {`$${medicine.price.toFixed(2)}`}
                           </span>
                         )}
                       </p>

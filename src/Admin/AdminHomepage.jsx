@@ -47,12 +47,12 @@ const AdminHomepage = () => {
           {/* Paid Total */}
           <div className="bg-green-100 text-green-800 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">Paid Total</h2>
-            <p className="text-2xl font-bold">${revenue.paid}</p>
+            <p className="text-2xl font-bold">{`$${revenue.paid}`}</p>
           </div>
           {/* Pending Total */}
           <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">Pending Total</h2>
-            <p className="text-2xl font-bold">${revenue.pending}</p>
+            <p className="text-2xl font-bold">{`$${revenue.pending}`}</p>
           </div>
         </div>
       </div>

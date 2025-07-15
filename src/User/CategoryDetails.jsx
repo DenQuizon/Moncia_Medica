@@ -107,7 +107,7 @@ const CategoryDetails = () => {
                 {medicine.description}
               </p>
               <p className="text-md font-medium text-gray-800 mt-2">
-                ${medicine.price}
+                {`$${medicine.price}`}
               </p>
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4 transition duration-300"
@@ -163,7 +163,7 @@ const CategoryDetails = () => {
               {selectedMedicine.massUnit}
             </p>
             <p>
-              <strong>Price:</strong> ${selectedMedicine.price}
+              <strong>Price:</strong> {`$${selectedMedicine.price}`}
             </p>
           </div>
         </div>

@@ -101,7 +101,7 @@ const SellerPayment = () => {
                       {payment.transactionId}
                     </td>
                     <td className="border border-gray-300 px-4 py-2">
-                      ${payment.price}
+                      {`$${payment.price}`}
                     </td>
                     <td className="border border-gray-300 px-4 py-2">
                       {new Date(payment.date).toLocaleDateString()}

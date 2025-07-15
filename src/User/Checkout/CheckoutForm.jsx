@@ -109,7 +109,7 @@ const CheckoutForm = () => {
         </h2>
         <p className="text-center text-gray-500 mb-6">
           Total Price:{" "}
-          <span className="font-semibold">${totalPrice.toFixed(2)}</span>
+          <span className="font-semibold">{`$${totalPrice.toFixed(2)}`}</span>
         </p>
         <form onSubmit={handleform}>
           <div className="mb-4">

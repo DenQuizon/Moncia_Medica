@@ -94,7 +94,7 @@ const AddMedicineForm = () => {
                 <td className="px-4 py-2">{medicine.itemName}</td>
                 <td className="px-4 py-2">{medicine.genericName}</td>
 
-                <td className="px-4 py-2">${medicine.price}</td>
+                <td className="px-4 py-2">{`$${medicine.price}`}</td>
                 <td className="px-4 py-2">{medicine.discount}% OFF</td>
               </tr>
             ))}
