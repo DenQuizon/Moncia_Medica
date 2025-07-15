@@ -77,7 +77,7 @@ const ManagePayment = () => {
                   {payment.transactionId}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  ${payment.price.toFixed(2)}
+                  {`$${payment.price.toFixed(2)}`}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   {new Date(payment.date).toLocaleDateString()}

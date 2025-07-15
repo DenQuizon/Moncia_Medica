@@ -93,7 +93,7 @@ const Invoice = () => {
           </p>
           <p className="text-gray-600">
             Price:{" "}
-            <span className="font-semibold">${filter.price.toFixed(2)}</span>
+            <span className="font-semibold">{`$${filter.price.toFixed(2)}`}</span>
           </p>
           <p className="text-gray-600">
             Date:{" "}
