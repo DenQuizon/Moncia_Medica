@@ -71,7 +71,7 @@ const PaymentHistory = () => {
                       {payment.transactionId || "N/A"}
                     </td>
                     <td className="border border-gray-300 px-4 py-2">
-                      ${payment.price?.toFixed(2) || "0.00"}
+                      {`$${payment.price?.toFixed(2) || "0.00"}`}
                     </td>
                     <td className="border border-gray-300 px-4 py-2">
                       {new Date(payment.date).toLocaleDateString() || "N/A"}

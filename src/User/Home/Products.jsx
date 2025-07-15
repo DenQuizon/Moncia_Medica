@@ -74,7 +74,7 @@ const Products = () => {
             <p className="text-gray-700 dark:text-gray-300 text-sm mt-1 line-clamp-2">
               {product.description}
             </p>
-            <p className="text-blue-500 font-bold mt-2">${product.price}</p>
+            <p className="text-blue-500 font-bold mt-2">{`$${product.price}`}</p>
             <button
               onClick={() => handleAddToCart(product)}
               className="mt-3 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 w-full"
